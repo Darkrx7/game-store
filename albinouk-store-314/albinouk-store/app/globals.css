@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@700;800;900&display=swap');
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: #0a0a0a;
+  color: #f2ede6;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.disp { font-family: 'Cairo', sans-serif; }
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0) rotate(20deg); }
+  50% { transform: translateY(-14px) rotate(35deg); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.94) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.fade-up { animation: fadeUp 0.55s cubic-bezier(.2,.8,.2,1) both; }
+.pop-in { animation: popIn 0.35s cubic-bezier(.2,.8,.2,1) both; }
+
+.card-hover { transition: transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s; }
+.card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -18px rgba(255,122,26,0.35); }
+
+.btn-glow { transition: all 0.25s ease; }
+.btn-glow:hover { box-shadow: 0 0 0 3px rgba(255,122,26,0.25); }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #ff7a1a55; border-radius: 8px; }
+
+@keyframes offerPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,59,48,0.45); }
+  50% { box-shadow: 0 0 0 6px rgba(255,59,48,0); }
+}
+.offer-pulse { animation: offerPulse 2s ease-in-out infinite; }
+
+@keyframes bannerIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.banner-in { animation: bannerIn 0.7s cubic-bezier(.2,.8,.2,1) both; }
+
+@keyframes countPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.count-pop { animation: countPop 0.4s ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up, .pop-in, .card-hover, .offer-pulse, .banner-in, .count-pop, * { animation: none !important; transition: none !important; }
+}
