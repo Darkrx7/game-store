@@ -106,8 +106,12 @@ export default function ProductForm({
       }
       onSaved();
       onClose();
-    } catch (err: any) {
-      setErrorMsg(err.message || "حدث خطأ أثناء حفظ المنتج");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setErrorMsg(err.message);
+      } else {
+        setErrorMsg("حدث خطأ أثناء حفظ المنتج");
+      }
     } finally {
       setSaving(false);
     }
@@ -273,7 +277,7 @@ export default function ProductForm({
             )}
           </div>
 
-          {/* ---- الشارات والمعالم ---- */}
+          {/* ---- الشارات المعالم ---- */}
           <div className="grid grid-cols-2 gap-3 pt-4">
             <label className="flex items-center gap-2 p-3 bg-zinc-800/40 border border-zinc-700/40 rounded-xl cursor-pointer">
               <input
